@@ -59,7 +59,7 @@ if (platform.system() =="Windows"):
             os.makedirs(savepath)
     savepath = savepath + "\\"
 elif (platform.system() =="Linux"):
-    savepath = '/home/Downloads/AiEasyVideo'
+    savepath = './AiEasyVideo/' + reqcontent.title.string
     if (os.path.exists(savepath) == False):
             os.makedirs(savepath)
     savepath = savepath +"/"
