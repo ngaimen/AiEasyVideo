@@ -63,15 +63,25 @@ elif (platform.system() =="Linux"):
     if (os.path.exists(savepath) == False):
             os.makedirs(savepath)
     savepath = savepath +"/"
+
 if (downmode == 'Y'):
-    for downstep in downurlarr:        # 第二个实例   
-        print ('正在下载第%d集：%s，剩余下载%d集' % (downurlarr.index(downstep) + 1, lesarr[downurlarr.index(downstep)], len(downurlarr) - (downurlarr.index(downstep) + 1)))
-        wget.download(downstep, savepath + lesarr[downurlarr.index(downstep)] + '.mp4')
+    for downstep in downurlarr:        # 第二个实例
+        save_file_path = savepath + str(downurlarr.index(downstep) + 1) +'_' + lesarr[downurlarr.index(downstep)] + '.mp4'
+        if os.path.exists(save_file_path):
+            print ('第%d集：%s，已经下载，剩余下载%d集' %
+                   (downurlarr.index(downstep) + 1, lesarr[downurlarr.index(downstep)], len(downurlarr) - (downurlarr.index(downstep) + 1)))
+            continue
+        else:
+            print ('正在下载第%d集：%s，剩余下载%d集' %
+                   (downurlarr.index(downstep) + 1, lesarr[downurlarr.index(downstep)], len(downurlarr) - (downurlarr.index(downstep) + 1)))
+            wget.download(downstep, save_file_path)
     print ('视频下载完成！好好学习！天天向上！')
+
 elif(0 < int(downmode)< len(downurlarr)):
     downnumber = int(downmode) - 1
     print ('请稍后正在下载第%d集：%s' % (int(downmode), lesarr[downnumber]))
-    wget.download(downurlarr[downnumber], savepath  + lesarr[downnumber] +'.mp4')
+    save_file_path = savepath + str(downnumber + 1) + '_' + lesarr[downnumber] + '.mp4'
+    wget.download(downurlarr[downnumber], save_file_path)
     print ('视频下载完成！好好学习！天天向上！')
     inexit = input ('输入Q退出本程序')
     while inexit =='Q':
