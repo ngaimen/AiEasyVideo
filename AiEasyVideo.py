@@ -68,7 +68,7 @@ if (downmode == 'Y'):
     for downstep in downurlarr:        # 第二个实例
         save_file_path = savepath + str(downurlarr.index(downstep) + 1) +'_' + lesarr[downurlarr.index(downstep)] + '.mp4'
         if os.path.exists(save_file_path):
-            print ('第%d集：%s，已经下载，剩余下载%d集' %
+            print ('已经下载，第%d集：%s，剩余下载%d集' %
                    (downurlarr.index(downstep) + 1, lesarr[downurlarr.index(downstep)], len(downurlarr) - (downurlarr.index(downstep) + 1)))
             continue
         else:
