@@ -54,12 +54,12 @@ print ('即将开始下载工作，请保证D盘有足够的硬盘空间！')
 downmode= input ('如下载全部视频，请输入 Y，单集请输入集号数字：')
 savepath = None
 if (platform.system() =="Windows"):
-    savepath = "D:\\AiEasyVideo\\" + splitname[0] + '\\' + splitname[1]
+    savepath = "D:\\download\\" + splitname[0] + '\\' + splitname[1]
     if(os.path.exists(savepath) == False):
             os.makedirs(savepath)
     savepath = savepath + "\\"
 elif (platform.system() =="Linux"):
-    savepath = './AiEasyVideo/' + reqcontent.title.string
+    savepath = './download/' + reqcontent.title.string
     if (os.path.exists(savepath) == False):
             os.makedirs(savepath)
     savepath = savepath +"/"
@@ -72,7 +72,7 @@ if (downmode == 'Y'):
                    (downurlarr.index(downstep) + 1, lesarr[downurlarr.index(downstep)], len(downurlarr) - (downurlarr.index(downstep) + 1)))
             continue
         else:
-            print ('正在下载第%d集：%s，剩余下载%d集' %
+            print ('\n正在下载第%d集：%s，剩余下载%d集' %
                    (downurlarr.index(downstep) + 1, lesarr[downurlarr.index(downstep)], len(downurlarr) - (downurlarr.index(downstep) + 1)))
             wget.download(downstep, save_file_path)
     print ('视频下载完成！好好学习！天天向上！')
