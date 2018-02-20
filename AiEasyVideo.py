@@ -51,7 +51,7 @@ for index in range(len(urlarr)):
 print ('即将开始下载工作，请保证D盘有足够的硬盘空间！')
 
 
-downmode= input ('如下载全部视频，请输入 Y，单集请输入集号数字：')
+downmode= input ('如下载全部视频，请输入 Y 或 直接按回车键，单集请输入集号数字：')
 savepath = None
 if (platform.system() =="Windows"):
     savepath = "D:\\download\\" + splitname[0] + '\\' + splitname[1]
@@ -64,7 +64,7 @@ elif (platform.system() =="Linux"):
             os.makedirs(savepath)
     savepath = savepath +"/"
 
-if (downmode == 'Y'):
+if not downmode.isdigit():
     for downstep in downurlarr:        # 第二个实例
         save_file_path = savepath + str(downurlarr.index(downstep) + 1) +'_' + lesarr[downurlarr.index(downstep)] + '.mp4'
         if os.path.exists(save_file_path):
